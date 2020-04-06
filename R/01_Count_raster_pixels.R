@@ -1,7 +1,8 @@
 ########################################################
-### SCRIPT TO COUNT PIXELS OF A RASTER              ####
+### SCRIPT TO COUNT PIXELS OF A RASTER AND CALCULATE####
+###             THE AREA OF LAND COVER              ####
 ### Por: Danielle de O. Moreira                     ####
-### Data: 01/04/2020                                ####
+### Data: 06/04/2020                                ####
 ########################################################
 
 library(raster)
