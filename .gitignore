@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+*.xlsx
+
+*.docx
+
+#ignorar pasta
+docs
