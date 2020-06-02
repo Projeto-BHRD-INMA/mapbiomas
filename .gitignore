@@ -3,9 +3,14 @@
 .RData
 .Ruserdata
 
+*.html
+
+*.gpkg
+
 *.xlsx
 
 *.docx
 
 #ignorar pasta
 docs
+mapbiomas_wgs84
