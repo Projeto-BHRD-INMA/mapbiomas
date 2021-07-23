@@ -115,7 +115,7 @@ dev.off()
 
 
 
-#--------------------------- Graphs for units planning 1985
+#--------------------------- Graphs for planning units 1985
 
 
 plotCarat1985 <- ggplot(tab_Carat1985, aes(my_class2, Percentage), width=.7) + #width faz a barra ficar mais fina (ou grossa)
@@ -273,7 +273,7 @@ dev.off()
 
 
 
-#--------------------------- Graphs for units planning 2019
+#--------------------------- Graphs for planning units 2019
 
 
 plotCarat2019 <- ggplot(tab_Carat2019, aes(my_class2, Percentage), width=.7) + #width faz a barra ficar mais fina (ou grossa)
@@ -427,139 +427,3 @@ grid.arrange(plotPiran2019, plotPira2019, plotSA2019, plotManh2019, plotCarat201
 dev.off()
 
 
-
-
-
-#----------------------------- COLORED GRAPHs (In construction)
-
-# The palette colors para o c(Agricultura, água, área natural, área urbana, floresta, mineração, outros, pastagem, silvicultura)
-Palette <- c("#e974ed", "#0000FF", "#32CD32", "#e31a1c", "#003300", "#fde163", "#8f9393", "#ffd966", "#993300")
-
-## For Land cover in 1985
-plot1 <- ggplot(tab_BD, aes(my_class, Percentage, fill = my_class), width = .7) + #width faz a barra ficar mais fina (ou grossa)
-    geom_bar(stat = "identity") +
-    theme_classic() +
-    expand_limits(y = 100) +
-    scale_fill_manual(values = Palette) +
-    ggtitle("Baixo Doce") +
-    labs(y = "Área ocupada (%)", x = NULL) +
-    theme (plot.title = element_text(size=12),
-           axis.text.x = element_blank(),
-           # axis.ticks.x = element_blank(),
-           axis.title.x = element_blank(),
-           # axis.text.x = element_text(size = 9, angle = 45, hjust = 1),
-           axis.text.y = element_text(size = 9),
-           legend.position = "none") #hjust adjust text below axis x
-
-plot2 <- ggplot(tab_Carat, aes(my_class, Percentage, fill = my_class), width=.7) + #width faz a barra ficar mais fina (ou grossa)
-    geom_bar(stat = "identity") +
-    theme_classic() +
-    expand_limits(y = 100) +
-    ggtitle("Caratinga") +
-    labs(y = NULL, x = NULL) +
-    theme (plot.title = element_text(size=12),
-           axis.text.x = element_blank(),
-           # axis.ticks.x = element_blank(),
-           axis.title.x = element_blank(),
-           # axis.text.x = element_text(size = 9, angle = 45, hjust = 1),
-           axis.text.y = element_blank(),
-           legend.position = "none")
-
-
-plot3 <- ggplot(tab_Manh, aes(my_class, Percentage, fill = my_class), width=.7) + #width faz a barra ficar mais fina (ou grossa)
-    geom_bar(stat = "identity") +
-    theme_classic() +
-    expand_limits(y = 100) +
-    ggtitle("Manhuaçu") +
-    labs(y = "Área ocupada (%)", x = NULL) +
-    theme (plot.title = element_text(size=12),
-           axis.text.x = element_blank(),
-           # axis.ticks.x = element_blank(),
-           axis.title.x = element_blank(),
-           # axis.text.x = element_text(size = 9, angle = 45, hjust = 1),
-           axis.text.y = element_text(size = 9),
-           legend.position = "none")
-
-
-plot4 <- ggplot(tab_Pira, aes(my_class, Percentage, fill = my_class), width=.7) + #width faz a barra ficar mais fina (ou grossa)
-    geom_bar(stat = "identity") +
-    theme_classic() +
-    expand_limits(y = 100) +
-    ggtitle("Piracicaba") +
-    labs(y = NULL, x = NULL) +
-    theme (plot.title = element_text(size=12),
-           axis.text.x = element_blank(),
-           # axis.ticks.x = element_blank(),
-           axis.title.x = element_blank(),
-           # axis.text.x = element_text(size = 9, angle = 45, hjust = 1),
-           axis.text.y = element_blank(),
-           legend.position = "none")
-
-
-plot5 <- ggplot(tab_Piran, aes(my_class, Percentage, fill = my_class), width=.7) + #width faz a barra ficar mais fina (ou grossa)
-    geom_bar(stat = "identity") +
-    theme_classic() +
-    expand_limits(y = 100) +
-    ggtitle("Piranga") +
-    labs(y = "Área ocupada (%)", x = NULL) +
-    theme (plot.title = element_text(size=12),
-           axis.text.x = element_blank(),
-           # axis.ticks.x = element_blank(),
-           axis.title.x = element_blank(),
-           # axis.text.x = element_text(size = 9, angle = 45, hjust = 1),
-           axis.text.y = element_text(size = 9),
-           legend.position = "none")
-
-plot6 <- ggplot(tab_SA, aes(my_class, Percentage, fill = my_class), width=.7) + #width faz a barra ficar mais fina (ou grossa)
-    geom_bar(stat = "identity") +
-    theme_classic() +
-    expand_limits(y = 100) +
-    ggtitle("Santo Antônio") +
-    labs(y = NULL, x = NULL) +
-    theme (plot.title = element_text(size=12),
-           axis.text.x = element_blank(),
-           # axis.ticks.x = element_blank(),
-           axis.title.x = element_blank(),
-           # axis.text.x = element_text(size = 9, angle = 45, hjust = 1),
-           axis.text.y = element_blank(),
-           legend.position = "none")
-
-
-plot7 <- ggplot(tab_Suacui, aes(my_class, Percentage, fill = my_class), width=.7) + #width faz a barra ficar mais fina (ou grossa)
-    geom_bar(stat = "identity") +
-    theme_classic() +
-    expand_limits(y = 100) +
-    scale_fill_manual(values = Palette) +
-    ggtitle("Suaçuí Grande") +
-    labs(y = "Área ocupada (%)", x = NULL) +
-    theme (plot.title = element_text(size = 12),
-           # axis.text.x = element_blank(),
-           # axis.ticks.x = element_blank(),
-           # axis.title.x = element_blank(),
-           axis.text.x = element_text(size = 11, angle = 45, hjust = 1),
-           axis.text.y = element_text(size = 11),
-           legend.position = "none")
-
-
-plot8 <- ggplot(tab_BHRD, aes(my_class, Percentage, fill = my_class), width=.7) + #width faz a barra ficar mais fina (ou grossa)
-    geom_bar(stat = "identity") +
-    theme_classic() +
-    expand_limits(y = 100) +
-    ggtitle("BHRD") +
-    labs(y = NULL, x = NULL) +
-    theme (plot.title = element_text(size=12),
-           # axis.text.x = element_blank(),
-           # axis.ticks.x = element_blank(),
-           # axis.title.x = element_blank(),
-           axis.text.x = element_text(size = 11, angle = 45, hjust = 1),
-           axis.text.y = element_blank(),
-           legend.position = "none")
-
-
-### The gridExtra package provides the facility to arrage multiple ggplots in a single grid.
-library(gridExtra)
-
-# To save the figure
-png(file="./figs/grafico_classes1985_bhrd2.png", height=30, width=20, unit="cm", res=300) #to save image
-grid.arrange(plot1, plot2, plot3, plot4, plot5, plot6, plot7, plot8, ncol=2)
-dev.off()
