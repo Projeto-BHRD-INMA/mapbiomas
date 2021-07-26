@@ -1,10 +1,10 @@
 
 ####################################################################
-###         GRAPHS OF THE MICRO WATERSHELTERS
+###         GRAPHS OF THE SUBWATERSHED
 ###
 ### By: Danielle de Oliveira Moreira
 ### date: 15/07/2020    updated:
-#################################################################
+###################################################################
 
 
 # Opening table with areas calculated
@@ -65,12 +65,276 @@ tab_Guandu2019 <- rbind(tab_Guandu2019, min)
 tab_Santa2019 <- rbind(tab_Santa2019, min)
 tab_SJose2019 <- rbind(tab_SJose2019, min)
 
+
+#Joining tables (2985 and 2019)
+library(dplyr)
+Caratinga <- full_join(tab_Carat1985, tab_Carat2019, by = "my_class2")
+Guandu <- full_join(tab_Guandu1985, tab_Guandu2019, by = "my_class2")
+Manhuacu <- full_join(tab_Manh1985, tab_Manh2019, by = "my_class2")
+Piracicaba <- full_join(tab_Pira1985, tab_Pira2019, by = "my_class2")
+Piranga <- full_join(tab_Piran1985, tab_Piran2019, by = "my_class2")
+Santa <- full_join(tab_Santa1985, tab_Santa2019, by = "my_class2")
+SA <- full_join(tab_SA1985, tab_SA2019, by = "my_class2")
+SJose <- full_join(tab_SJose1985, tab_SJose2019, by = "my_class2")
+Suacui <- full_join(tab_Suacui1985, tab_Suacui2019, by = "my_class2")
+bhrd <- full_join(tab_BHRD1985, tab_BHRD2019, by = "my_class2")
+
+
+
+
 #------------------------------- MAKING GRAPHS ------------------------------------#
-##Plot in a graph
-### To remove scientific format of numbers
-#options(scipen = 999)
+
+## For graphs with more than one column per class - Line 94
+## For graphs with one column per class - Line 333
+
+
+library(ggplot2)
+
+
+####### MULTIPLE COLUMNS GRAPHS ############
+
+#---------- For entire watershed Comparing land use and land cover of 1985 and 2019
+
+library(tidyr)
+
+plotBhrd <- bhrd %>%
+    select(-c(X.x, area_ha.x, X.y, area_ha.y)) %>%
+    gather("Type", "Value", -my_class2) %>% # to transform table
+    ggplot(aes(my_class2, Value, fill = Type), width=.5) + #width makes a thinner or wider bar
+    geom_bar(position = "dodge", stat = "identity") +
+    geom_text(aes(label = Value), position = position_dodge(1), vjust = -0.5, size = 2.5) +
+    theme_classic() +
+    expand_limits(y = 100) +
+    labs(y = "Área ocupada (%)", x = NULL, fill = "Ano") +
+    theme (plot.title = element_text(size=12),
+           # axis.text.x = element_blank(),
+           # axis.ticks.x = element_blank(),
+           # axis.title.x = element_blank(),
+           axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
+           legend.position = c(0.5, 0.8),
+           legend.direction = "horizontal") +
+    scale_fill_manual(                 # adding colors and change legend labels manually
+        values = c("Percentage.x"= "#818181",
+                   "Percentage.y" = "#050505"),
+        labels = c("1985", "2019"))
+
+# To save the figure
+jpeg(file="./figs/grafico_uso_bhrd1985-2019(2).jpeg", height = 10, width = 15, units="cm", res=300)
+#png(file="./figs/grafico_bhrd1985-2019(3).png", height = 10, width = 25, unit="cm", res=300)
+plotBhrd
+dev.off()
+
+
+
+#---------- For each subwatershed Comparing land use and land cover of 1985 and 2019
+
+plotCaratinga <- Caratinga %>%
+    select(-c(X.x, area_ha.x, X.y, area_ha.y)) %>%
+    gather("Type", "Value", -my_class2) %>%
+    ggplot(aes(my_class2, Value, fill = Type), width=.5) + #width faz a barra ficar mais fina (ou grossa)
+    geom_bar(position = "dodge", stat = "identity") +
+    # geom_text(aes(label = Value), position = position_dodge(1), vjust = -0.5, size = 2.0) +
+    theme_classic() +
+    expand_limits(y = 100) +
+    ggtitle("Caratinga") +
+    labs(y = NULL, x = NULL) +
+    theme (plot.title = element_text(size=12),
+           axis.text.x = element_blank(),
+           # axis.ticks.x = element_blank(),
+           # axis.title.x = element_blank(),
+           # axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
+           legend.position = "none") +
+    scale_fill_manual(                 # adding colors manually
+        values = c("Percentage.x"= "#818181",
+                   "Percentage.y" = "#050505"))
+
+
+plotGuandu <- Guandu %>%
+    select(-c(X.x, area_ha.x, X.y, area_ha.y)) %>%
+    gather("Type", "Value", -my_class2) %>%
+    ggplot(aes(my_class2, Value, fill = Type), width=.5) + #width faz a barra ficar mais fina (ou grossa)
+    geom_bar(position = "dodge", stat = "identity") +
+    # geom_text(aes(label = Value), position = position_dodge(1), vjust = -0.5, size = 2.0) +
+    theme_classic() +
+    expand_limits(y = 100) +
+    ggtitle("Guandu") +
+    labs(y = "Área ocupada (%)", x = NULL) +
+    theme (plot.title = element_text(size=12),
+           # axis.text.x = element_blank(),
+           # axis.ticks.x = element_blank(),
+           # axis.title.x = element_blank(),
+           axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
+           legend.position = "none") +
+    scale_fill_manual(                 # adding colors manually
+        values = c("Percentage.x"= "#818181",
+                   "Percentage.y" = "#050505"))
+
+
+plotManhuacu <- Manhuacu %>%
+    select(-c(X.x, area_ha.x, X.y, area_ha.y)) %>%
+    gather("Type", "Value", -my_class2) %>%
+    ggplot(aes(my_class2, Value, fill = Type), width=.5) + #width faz a barra ficar mais fina (ou grossa)
+    geom_bar(position = "dodge", stat = "identity") +
+    # geom_text(aes(label = Value), position = position_dodge(1), vjust = -0.5, size = 2.0) +
+    theme_classic() +
+    expand_limits(y = 100) +
+    ggtitle("Manhuaçu") +
+    labs(y = "Área ocupada (%)", x = NULL) +
+    theme (plot.title = element_text(size=12),
+           axis.text.x = element_blank(),
+           # axis.ticks.x = element_blank(),
+           # axis.title.x = element_blank(),
+           # axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
+           legend.position = "none") +
+    scale_fill_manual(                 # adding colors manually
+        values = c("Percentage.x"= "#818181",
+                   "Percentage.y" = "#050505"))
+
+
+plotPiracicaba <- Piracicaba %>%
+    select(-c(X.x, area_ha.x, X.y, area_ha.y)) %>%
+    gather("Type", "Value", -my_class2) %>%
+    ggplot(aes(my_class2, Value, fill = Type), width=.5) + #width faz a barra ficar mais fina (ou grossa)
+    geom_bar(position = "dodge", stat = "identity") +
+    # geom_text(aes(label = Value), position = position_dodge(1), vjust = -0.5, size = 2.0) +
+    theme_classic() +
+    expand_limits(y = 100) +
+    ggtitle("Piracicaba") +
+    labs(y = NULL, x = NULL) +
+    theme (plot.title = element_text(size=12),
+           axis.text.x = element_blank(),
+           # axis.ticks.x = element_blank(),
+           # axis.title.x = element_blank(),
+           # axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
+           legend.position = "none") +
+    scale_fill_manual(                 # adding colors manually
+        values = c("Percentage.x"= "#818181",
+                   "Percentage.y" = "#050505"))
+
+
+plotPiranga <- Piranga %>%
+    select(-c(X.x, area_ha.x, X.y, area_ha.y)) %>%
+    gather("Type", "Value", -my_class2) %>%
+    ggplot(aes(my_class2, Value, fill = Type), width=.5) + #width faz a barra ficar mais fina (ou grossa)
+    geom_bar(position = "dodge", stat = "identity") +
+    # geom_text(aes(label = Value), position = position_dodge(1), vjust = -0.5, size = 2.0) +
+    theme_classic() +
+    expand_limits(y = 100) +
+    ggtitle("Piranga") +
+    labs(y = "Área ocupada (%)", x = NULL, fill = "Ano") +
+    theme (plot.title = element_text(size=12),
+           axis.text.x = element_blank(),
+           # axis.ticks.x = element_blank(),
+           # axis.title.x = element_blank(),
+           # axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
+           legend.position = c(0.5, 0.8),
+           legend.direction = "horizontal") + #position of legend inside graph)
+    #scale_fill_discrete(name = "Dose", labels = c("A", "B")) +
+    scale_fill_manual(                 # adding colors manually
+        values = c("Percentage.x"= "#818181",
+                   "Percentage.y" = "#050505"),
+        labels = c("1985", "2019"))
+
+
+plotSanta <- Santa %>%
+    select(-c(X.x, area_ha.x, X.y, area_ha.y)) %>%
+    gather("Type", "Value", -my_class2) %>%
+    ggplot(aes(my_class2, Value, fill = Type), width=.5) + #width faz a barra ficar mais fina (ou grossa)
+    geom_bar(position = "dodge", stat = "identity") +
+    # geom_text(aes(label = Value), position = position_dodge(1), vjust = -0.5, size = 2.0) +
+    theme_classic() +
+    expand_limits(y = 100) +
+    ggtitle("Santa Maria do Doce") +
+    labs(y = NULL, x = NULL) +
+    theme (plot.title = element_text(size=12),
+           # axis.text.x = element_blank(),
+           # axis.ticks.x = element_blank(),
+           # axis.title.x = element_blank(),
+           axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
+           legend.position = "none") +
+    scale_fill_manual(                 # adding colors manually
+        values = c("Percentage.x"= "#818181",
+                   "Percentage.y" = "#050505"))
+
+plotSA <- SA %>%
+    select(-c(X.x, area_ha.x, X.y, area_ha.y)) %>%
+    gather("Type", "Value", -my_class2) %>%
+    ggplot(aes(my_class2, Value, fill = Type), width=.5) + #width faz a barra ficar mais fina (ou grossa)
+    geom_bar(position = "dodge", stat = "identity") +
+    # geom_text(aes(label = Value), position = position_dodge(1), vjust = -0.5, size = 2.0) +
+    theme_classic() +
+    expand_limits(y = 100) +
+    ggtitle("Santo Antônio") +
+    labs(y = NULL, x = NULL) +
+    theme (plot.title = element_text(size=12),
+           axis.text.x = element_blank(),
+           # axis.ticks.x = element_blank(),
+           # axis.title.x = element_blank(),
+           # axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
+           legend.position = "none") +
+    scale_fill_manual(                 # adding colors manually
+        values = c("Percentage.x"= "#818181",
+                   "Percentage.y" = "#050505"))
+
+
+plotSJose <- SJose %>%
+    select(-c(X.x, area_ha.x, X.y, area_ha.y)) %>%
+    gather("Type", "Value", -my_class2) %>%
+    ggplot(aes(my_class2, Value, fill = Type), width=.5) + #width faz a barra ficar mais fina (ou grossa)
+    geom_bar(position = "dodge", stat = "identity") +
+    # geom_text(aes(label = Value), position = position_dodge(1), vjust = -0.5, size = 2.0) +
+    theme_classic() +
+    expand_limits(y = 100) +
+    ggtitle("São José") +
+    labs(y = NULL, x = NULL) +
+    theme (plot.title = element_text(size=12),
+           # axis.text.x = element_blank(),
+           # axis.ticks.x = element_blank(),
+           # axis.title.x = element_blank(),
+           axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
+           legend.position = "none") +
+    scale_fill_manual(                 # adding colors manually
+        values = c("Percentage.x"= "#818181",
+                   "Percentage.y" = "#050505"))
+
+
+plotSuacui <- Suacui %>%
+    select(-c(X.x, area_ha.x, X.y, area_ha.y)) %>%
+    gather("Type", "Value", -my_class2) %>%
+    ggplot(aes(my_class2, Value, fill = Type), width=.5) + #width faz a barra ficar mais fina (ou grossa)
+    geom_bar(position = "dodge", stat = "identity") +
+    # geom_text(aes(label = Value), position = position_dodge(1), vjust = -0.5, size = 2.0) +
+    theme_classic() +
+    expand_limits(y = 100) +
+    ggtitle("Suaçuí Grande") +
+    labs(y = NULL, x = NULL) +
+    theme (plot.title = element_text(size=12),
+           axis.text.x = element_blank(),
+           # axis.ticks.x = element_blank(),
+           # axis.title.x = element_blank(),
+           # axis.text.x = element_text(size = 10, angle = 45, hjust = 1),
+           legend.position = "none") +
+    scale_fill_manual(                 # adding colors manually
+        values = c("Percentage.x"= "#818181",
+                   "Percentage.y" = "#050505"))
+
+
+# To save the figure for 1985
+library(gridExtra)
+
+jpeg(file="./figs/grafico_uso_uph_1985-2019.jpeg", height = 20, width = 25,
+     unit="cm", res=300)
+# png(file="./figs/grafico_classes1985_bhrd(3).png", height = 20, width = 25,
+#     unit="cm", res=300)
+grid.arrange(plotPiranga, plotPiracicaba, plotSA, plotManhuacu, plotCaratinga,
+             plotSuacui, plotGuandu, plotSanta, plotSJose, ncol = 3)
+dev.off()
+
+
+######### ONE COLUMN PER CLASS GRAPHS ############
 
 #---------- Comparing land use and land cover of 1985 and 2019
+
 library(ggplot2)
 
 plotBhrd_1985 <- ggplot(tab_BHRD1985, aes(my_class2, Percentage), width=.7) + #width faz a barra ficar mais fina (ou grossa)
@@ -115,7 +379,7 @@ dev.off()
 
 
 
-#--------------------------- Graphs for planning units 1985
+#--------------------------- Graphs for subwatershed 1985
 
 
 plotCarat1985 <- ggplot(tab_Carat1985, aes(my_class2, Percentage), width=.7) + #width faz a barra ficar mais fina (ou grossa)

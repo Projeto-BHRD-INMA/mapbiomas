@@ -1,9 +1,9 @@
 ####################################################################
-###         CALCULATE LAND COVER USE AREA FOR EACH MICRO WATERSHELTER
+###         CALCULATE LAND COVER USE AREA FOR EACH SUBWATERSHED
 ###
 ### By: Danielle de Oliveira Moreira
 ### date: 14/07/2020    updated:
-#################################################################
+####################################################################
 
 
 library(raster)
@@ -32,7 +32,7 @@ area_uso <- as.data.frame(uso) %>%
 
 area_uso
 
-#Save the results of frequency in txt.
+#Save the results in txt.
 write.csv(area_uso,"./results/mapbiomas_wgs84/raw/area-uso-2019_bhrd-SaoJose.csv",
           row.names = TRUE)
 
@@ -44,7 +44,7 @@ write.csv(area_uso,"./results/mapbiomas_wgs84/raw/area-uso-2019_bhrd-SaoJose.csv
 #Opening table with land cover use codes
 code <- read.csv2("./data/raster/legend_col5_mapbiomas.csv", encoding="utf-8")
 
-# Opening table with areas calculated
+# Opening table with calculated areas
 list_table_raw <- list.files("./results/mapbiomas_wgs84/raw", pattern = ".csv", full.names = T)
 list_table_raw
 

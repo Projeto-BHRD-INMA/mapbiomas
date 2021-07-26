@@ -1,20 +1,15 @@
 #####################################################
-###     Script para mudar de projecao de varios   ###
-###     arquivos rasters ao mesmo tempo.          ###
+### Script para mudar de projecao de Shapefile e  ###
+###           varios   arquivos rasters           ###
+
 ### Criação: Ana Carolina Devides Castello        ###
-<<<<<<< HEAD
 ### Modificado: Danielle de Oliveira Moreira &    ###
 ###         Gustavo Varela-Alvarenga              ###
 ### em 05/05/2020                                 ###
-=======
-### Modificado: Danielle de Oliveira Moreira      ###
-### em 06/04/2020                                 ###
->>>>>>> 75cd6fda662c138437f273a4f41909be93f2f832
 #####################################################
 
 
 library(raster)
-<<<<<<< HEAD
 library(rgdal)
 
 ## Open the raster file
@@ -71,7 +66,6 @@ uso2018_ngb <- raster("./data/albers/mapbiomas.2018.ngb.tif")
 
 # Diretorio onde estao os dados
 Dir <- "./data/mapbiomas"
-=======
 
 #For one raster file
 uso <- raster("./data/mapbiomas-none-2018.tif")
@@ -88,7 +82,6 @@ writeRaster(uso_albers, "./data/albers/mapbiomas.none.1985.tif", driver = "ESRI 
 #FOR MORE THAN ONE FILE
 # Diretorio onde estao os dados
 Dir <- "./data"
->>>>>>> 75cd6fda662c138437f273a4f41909be93f2f832
 
 # Lista dos arquivos
 data <- list.files(Dir, pattern = ".tif", full.names = T)
@@ -96,29 +89,27 @@ data <- list.files(Dir, pattern = ".tif", full.names = T)
 data
 
 # Diretorio onde serao salvos os dados com a resolucao transformada
-<<<<<<< HEAD
+
 Dirsave <- "./data/albers/mapbiomas"
 dir.create(Dirsave) #para criar a nova pasta
-=======
+
 Dirsave <- "./data/albers"
 dir.create(Dirsave) #cria a nova pasta
->>>>>>> 75cd6fda662c138437f273a4f41909be93f2f832
 
 #Loop para reprojetar
 for (i in 1:length(data)) {
     print(i)
     layer1 <- raster(data[i])
-<<<<<<< HEAD
+
     layer2 <- projectRaster(layer1, crs = CRS("+proj=aea +lat_1=10 +lat_2=-40 +lat_0=-25 +lon_0=-50 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"), method = "ngb")
-=======
+
     layer2 <- projectRaster(layer1, crs = CRS("+proj=aea +lat_1=-5 +lat_2=-42 +lat_0=-32 +lon_0=-60 +x_0=0 +y_0=0 +ellps=aust_SA +units=m +no_defs"))
->>>>>>> 75cd6fda662c138437f273a4f41909be93f2f832
+
     writeRaster(layer2, paste(Dirsave, paste0(names(layer1), '.tif$'), sep = '/'),
                 format = 'GTiff',
                 overwrite = T)
 }
-<<<<<<< HEAD
-=======
+
 
 #Loop para definir a projecao
 #for (i in 1:length(data)) {
@@ -129,4 +120,4 @@ for (i in 1:length(data)) {
 #                format = 'GTiff',
 #                overwrite = T)
 #}
->>>>>>> 75cd6fda662c138437f273a4f41909be93f2f832
+
