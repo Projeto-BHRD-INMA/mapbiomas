@@ -42,7 +42,7 @@ write.csv(area_uso,"./results/mapbiomas_wgs84/raw/area-uso-2019_bhrd-SaoJose.csv
 ## Join tables to insert information of land cover use
 
 #Opening table with land cover use codes
-code <- read.csv2("./data/raster/legend_col5_mapbiomas.csv", encoding="utf-8")
+code <- read.csv2("./results/mapbiomas_wgs84/legend_col5_mapbiomas.csv", encoding="utf-8")
 
 # Opening table with calculated areas
 list_table_raw <- list.files("./results/mapbiomas_wgs84/raw", pattern = ".csv", full.names = T)
