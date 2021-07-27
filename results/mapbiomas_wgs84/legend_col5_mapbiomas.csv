@@ -1,0 +1,31 @@
+ID;Class;my_class;my_class2
+1;Foresta;Floresta;Área natural
+2;Floresta Natural ;Floresta;Área natural
+3;Formação Florestal ;Floresta;Área natural
+4;Formação Savânica ;Floresta;Área natural
+5;Mangue ;Floresta;Área natural
+9;Floresta Plantada ;Silvicultura;Silvicultura
+10;Formação Natural não Florestal;Área natural;Área natural
+11;Campo Alagado e Área Pantanosa ;Área natural;Área natural
+12;Formação Campestre ;Área natural;Área natural
+32;Apicum ;Área natural;Área natural
+29;Afloramento Rochoso ;Área natural;Área natural
+13;Outras Formações não Florestais ;Área natural;Área natural
+14;Agropecuária ;Agricultura;Agricultura
+15;Pastagem ;Pastagem ;Pastagem 
+18;Agricultura ;Agricultura;Agricultura
+19;Lavoura Temporária ;Agricultura;Agricultura
+39;Soja ;Agricultura;Agricultura
+20;Cana ;Agricultura;Agricultura
+41;Outras Lavouras Temporárias;Agricultura;Agricultura
+36;Lavoura Perene ;Agricultura;Agricultura
+21;Mosaico de Agricultura e Pastagem ;Agricultura;Agricultura
+22;Área não Vegetada;Outros;Outros
+23;Praia e Duna;Área natural;Área natural
+24;Infraestrutura Urbana;Área urbana;Área urbana
+30;Mineração;Mineracao;Mineração
+25;Outras Áreas não Vegetadas;Outros;Outros
+26;Corpos D'água;Água;Água
+33;Rio Lago e Oceano;Água;Água
+31;Aquicultura;Outros;Outros
+27;Não Observado;NA;NA
