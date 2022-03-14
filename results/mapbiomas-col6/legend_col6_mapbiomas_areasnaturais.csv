@@ -1,0 +1,15 @@
+ID,Class,Class_En,my_class,my_class2
+1,Foresta,Forest,Floresta,?rea nativa
+3,Forma??o Florestal ,Forest Formation,Floresta,?rea nativa
+4,Forma??o Sav?nica ,Savanna Formation,Floresta,?rea nativa
+5,Mangue ,Mangrove,Floresta,?rea nativa
+49,Restinga Arborizada,Wooded Restinga,Floresta,?rea nativa
+10,Forma??o Natural n?o Florestal,Non Forest Natural Formation,?rea nativa,?rea nativa
+11,Campo Alagado e ?rea Pantanosa ,Wetland,?rea nativa,?rea nativa
+12,Forma??o Campestre ,Grassland,?rea nativa,?rea nativa
+32,Apicum ,Salt Flat,?rea nativa,?rea nativa
+29,Afloramento Rochoso ,Rocky Outcrop,?rea nativa,?rea nativa
+13,Outras Forma??es n?o Florestais ,Other non Forest Formations,?rea nativa,?rea nativa
+25,Outras ?reas n?o Vegetadas,Other non Vegetated Areas,Outros,?rea nativa
+26,Corpos D'?gua,Water,?gua,?gua
+33,Rio Lago e Oceano,"River, Lake and Ocean",?gua,?gua
