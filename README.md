@@ -1,15 +1,15 @@
 ## Cálculo do tamanho da área de classes de uso do solo da BHRD
 ###Criado por Danielle de Oliveira Moreira
 ###Em 06/04/2020
-###Atualizado em 27/07/2021
+###Atualizado em 14/03/2022
 
-Arquivos Raster Mapbiomas
-Scripts para a manipulação de arquivos, em formato Raster, de uso do solo do Mapbiomas, cortados para a Mata Atlântica da bacia do rio Doce (https://drive.google.com/drive/folders/1BeWd3hhD_fKgrEzZacL_na0IVd2mUqu9?usp=sharing).
-Fonte original: https://mapbiomas.org/
+Raster Files Mapbiomas
+Scripts for land use rasters manipulation from Mapbiomas (Collection 6), for the Doce River Basin, Brazil.
+Files available in this link: https://drive.google.com/drive/folders/1C1hqsrxzhXxBP9W3VKK9HlcFB5St0_tB?usp=sharing).
+Original files: https://mapbiomas.org/
 
-Arquivos em escala de 30m para os anos 1985 a 2018.
+Raster in 30 m resolution for the years of 1985 and 2020.
 
-O objetivo é calcular o tamanho da área de cada classe de uso do solo para a Mata Atlântica da bacia do rio Doce.
 
 
 
